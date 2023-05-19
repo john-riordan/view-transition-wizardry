@@ -48,6 +48,7 @@ const { title, wizard } = Astro.props;
 
 <style lang='scss'>
   .container {
+    view-transition-name: wizard;
     position: relative;
     padding: 12px;
     box-shadow: 0 0 180px 5px var(--black), 0 0 50px 5px var(--black);
@@ -64,7 +65,6 @@ const { title, wizard } = Astro.props;
     }
   }
   .img-container {
-    // view-transition-name: wizard;
     position: relative;
     width: 90vw;
     max-width: 41rem;
