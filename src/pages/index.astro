@@ -39,14 +39,14 @@ import { WIZARDS } from '../wizards';
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 1rem;
+    gap: 2rem;
     flex-wrap: wrap;
   }
   a {
     // view-transition-name: wizard;
     position: relative;
     display: block;
-    padding: 12px;
+    padding: 8px;
 
     &::before {
       content: '';
@@ -58,11 +58,12 @@ import { WIZARDS } from '../wizards';
   }
   .img-container {
     position: relative;
-    width: 200px;
+    width: 10rem;
+    max-width: 10rem;
     height: auto;
     aspect-ratio: 1;
     overflow: hidden;
-    box-shadow: 0 0 0 11px black;
+    box-shadow: 0 0 0 7px black;
   }
   img {
     position: absolute;

@@ -54,4 +54,15 @@ export const WIZARDS = [
     color3: 'oklch(0.55 0.07 311.32)',
     offsets: { x: '-51%', y: '58%', scale: '4.25' },
   },
+  {
+    key: 'wizard-peridot',
+    name: 'Peridot',
+    link: '/wizard-peridot',
+    art: '/wizard-peridot.webp',
+    alt: 'Peridot Wizard',
+    color1: 'oklch(0.32 0.03 102.4)',
+    color2: 'oklch(0.52 0.02 118.79)',
+    color3: 'oklch(0.77 0.03 118.98)',
+    offsets: { x: '-51%', y: '74%', scale: '4' },
+  },
 ];
