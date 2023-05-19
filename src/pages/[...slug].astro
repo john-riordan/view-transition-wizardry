@@ -1,0 +1,122 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { WIZARDS } from '../wizards';
+
+export async function getStaticPaths() {
+  const pages = WIZARDS.map(wizard => ({
+    slug: wizard.key,
+    title: wizard.name,
+    wizard: wizard,
+  }));
+
+  return pages.map(({ slug, title, wizard }) => {
+    return {
+      params: { slug },
+      props: { title, wizard },
+    };
+  });
+}
+
+const { title, wizard } = Astro.props;
+---
+
+<Layout title={`${title} - Gemstone Wizards`}>
+  <main
+    style={{
+      '--x': '-50%',
+      '--y': '-50%',
+      '--s': 1.2,
+      '--c1': wizard.color1,
+      '--c2': wizard.color2,
+      '--c3': wizard.color3,
+    }}
+  >
+    <div class='backdrop' style={{ '--img': `url(${wizard.art})` }}></div>
+    <div class='container'>
+      <section class='img-container'>
+        <img src={wizard.art} alt={wizard.alt} width='928' height='1312' />
+        <div class='meta'>
+          <h1>{title}</h1>
+          <div class='underline'></div>
+        </div>
+      </section>
+    </div>
+  </main>
+</Layout>
+
+<style lang='scss'>
+  .container {
+    position: relative;
+    padding: 12px;
+    // -webkit-mask-image: url(/grit.png);
+    // -webkit-mask-size: auto;
+
+    &::before {
+      content: '';
+      display: block;
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, var(--c2), var(--c1));
+      opacity: 0.5;
+    }
+  }
+  .img-container {
+    // view-transition-name: wizard;
+    position: relative;
+    width: 650px;
+    height: auto;
+    aspect-ratio: 1 / 1.4;
+    overflow: hidden;
+    box-shadow: 0 0 0 11px var(--black);
+  }
+  img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: auto;
+    translate: var(--x) var(--y);
+    scale: var(--s);
+    pointer-events: none;
+  }
+
+  .meta {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding-block: 10rem 3rem;
+    background: linear-gradient(to bottom, transparent, var(--black));
+  }
+  h1 {
+    text-align: center;
+    color: var(--c3);
+    font-size: 2.5rem;
+    margin: 0;
+  }
+  .underline {
+    width: 350px;
+    height: 1px;
+    background: var(--c1);
+    -webkit-mask-image: linear-gradient(
+      to right,
+      transparent 0%,
+      black 40%,
+      black 60%,
+      transparent 100%
+    );
+  }
+  .backdrop {
+    position: absolute;
+    inset: 0;
+    // background: var(--img) no-repeat center;
+    // background-size: 250%;
+    // filter: blur(50px);
+    opacity: 0.1;
+    background: radial-gradient(circle at center 0%, var(--c2), var(--black));
+  }
+</style>
