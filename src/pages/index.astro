@@ -17,6 +17,7 @@ import { WIZARDS } from '../wizards';
               '--s': wizard.offsets.scale,
               '--c1': wizard.color1,
               '--c2': wizard.color2,
+              '--name': wizard.name,
             }}
           >
             <div class='img-container'>
@@ -44,7 +45,7 @@ import { WIZARDS } from '../wizards';
     padding: 5rem;
   }
   a {
-    view-transition-name: wizard;
+    view-transition-name: var(--name);
     position: relative;
     display: block;
     padding: 8px;

@@ -32,7 +32,12 @@ const { title, wizard } = Astro.props;
     }}
   >
     <div class='backdrop' style={{ '--img': `url(${wizard.art})` }}></div>
-    <div class='container'>
+    <div
+      class='container'
+      style={{
+        '--name': wizard.name,
+      }}
+    >
       <section class='img-container'>
         <img src={wizard.art} alt={wizard.alt} width='928' height='1312' />
         <div class='meta'>
@@ -48,7 +53,7 @@ const { title, wizard } = Astro.props;
 
 <style lang='scss'>
   .container {
-    view-transition-name: wizard;
+    view-transition-name: var(--name);
     position: relative;
     padding: 12px;
     box-shadow: 0 0 180px 5px var(--black), 0 0 50px 5px var(--black);
