@@ -4,7 +4,7 @@ import { WIZARDS } from '../wizards';
 
 export async function getStaticPaths() {
   const pages = WIZARDS.map(wizard => ({
-    slug: wizard.key,
+    slug: wizard.name,
     title: wizard.name,
     wizard: wizard,
   }));
@@ -38,9 +38,11 @@ const { title, wizard } = Astro.props;
         <div class='meta'>
           <h1>{title}</h1>
           <div class='underline'></div>
+          <p set:html={wizard.bio} />
         </div>
       </section>
     </div>
+    <!-- <div class='glow'></div> -->
   </main>
 </Layout>
 
@@ -48,6 +50,7 @@ const { title, wizard } = Astro.props;
   .container {
     position: relative;
     padding: 12px;
+    box-shadow: 0 0 180px 5px var(--black), 0 0 50px 5px var(--black);
     // -webkit-mask-image: url(/grit.png);
     // -webkit-mask-size: auto;
 
@@ -63,11 +66,21 @@ const { title, wizard } = Astro.props;
   .img-container {
     // view-transition-name: wizard;
     position: relative;
-    width: 650px;
+    width: 90vw;
+    max-width: 41rem;
     height: auto;
     aspect-ratio: 1 / 1.4;
     overflow: hidden;
     box-shadow: 0 0 0 11px var(--black);
+
+    &::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border: 1px solid var(--white);
+      mix-blend-mode: overlay;
+      pointer-events: none;
+    }
   }
   img {
     position: absolute;
@@ -89,7 +102,7 @@ const { title, wizard } = Astro.props;
     bottom: 0;
     left: 0;
     width: 100%;
-    padding-block: 10rem 3rem;
+    padding-block: 13rem 3rem;
     background: linear-gradient(to bottom, transparent, var(--black));
   }
   h1 {
@@ -97,6 +110,7 @@ const { title, wizard } = Astro.props;
     color: var(--c3);
     font-size: 2.5rem;
     margin: 0;
+    text-shadow: 0 4px 8px var(--black);
   }
   .underline {
     width: 350px;
@@ -110,13 +124,31 @@ const { title, wizard } = Astro.props;
       transparent 100%
     );
   }
+  p {
+    width: 90%;
+    max-width: 50ch;
+    color: var(--white);
+    margin: 0;
+    text-shadow: 0 3px 5px var(--black);
+  }
   .backdrop {
     position: absolute;
     inset: 0;
     // background: var(--img) no-repeat center;
     // background-size: 250%;
     // filter: blur(50px);
-    opacity: 0.1;
-    background: radial-gradient(circle at center 0%, var(--c2), var(--black));
+    opacity: 0.2;
+    background: radial-gradient(circle at center 0%, var(--c3), var(--black));
+  }
+
+  .glow {
+    position: absolute;
+    top: -40%;
+    left: 0;
+    right: 0;
+    height: 1130px;
+    background: radial-gradient(var(--c2), transparent 50%);
+    mix-blend-mode: color-dodge;
+    opacity: 0.25;
   }
 </style>

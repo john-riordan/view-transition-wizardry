@@ -10,7 +10,7 @@ import { WIZARDS } from '../wizards';
       {
         WIZARDS.map(wizard => (
           <a
-            href={wizard.link}
+            href={wizard.name}
             style={{
               '--x': wizard.offsets.x,
               '--y': wizard.offsets.y,
@@ -64,6 +64,15 @@ import { WIZARDS } from '../wizards';
     aspect-ratio: 1;
     overflow: hidden;
     box-shadow: 0 0 0 7px black;
+
+    &::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border: 1px solid var(--white);
+      mix-blend-mode: overlay;
+      pointer-events: none;
+    }
   }
   img {
     position: absolute;
