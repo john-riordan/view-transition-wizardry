@@ -31,12 +31,14 @@ const { title, wizard } = Astro.props;
       '--c3': wizard.color3,
     }}
   >
-    <div class='backdrop' style={{ '--img': `url(${wizard.art})` }}></div>
+    <div class='backdrop' style={{ '--img': `url(${wizard.art})` }} />
+    <a href="/">Back</a>
     <div
       class='container'
       style={{
         '--name': wizard.name,
       }}
+      transition:name={`wizard-${wizard.name}`}
     >
       <section class='img-container'>
         <img src={wizard.art} alt={wizard.alt} width='928' height='1312' />
@@ -47,13 +49,11 @@ const { title, wizard } = Astro.props;
         </div>
       </section>
     </div>
-    <!-- <div class='glow'></div> -->
   </main>
 </Layout>
 
 <style lang='scss'>
   .container {
-    view-transition-name: var(--name);
     position: relative;
     padding: 12px;
     box-shadow: 0 0 180px 5px var(--black), 0 0 50px 5px var(--black);
@@ -157,5 +157,42 @@ const { title, wizard } = Astro.props;
     background: radial-gradient(var(--c2), transparent 50%);
     mix-blend-mode: color-dodge;
     opacity: 0.25;
+  }
+
+  a {
+    color: white;
+    text-decoration: none;
+    padding-block-end: 1rem;
+    z-index: 1;
+    opacity: 0.5;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+
+    &:hover {
+      text-decoration: underline;
+      opacity: 0.75;
+    }
+  }
+
+  :global(::view-transition-new(wizard-Erevan)) {
+    z-index: 2;
+  }
+  :global(::view-transition-new(wizard-Roderick)) {
+    z-index: 2;
+  }
+  :global(::view-transition-new(wizard-Astrid)) {
+    z-index: 2;
+  }
+  :global(::view-transition-new(wizard-Soren)) {
+    z-index: 2;
+  }
+  :global(::view-transition-new(wizard-Arion)) {
+    z-index: 2;
+  }
+  :global(::view-transition-new(wizard-Paridian)) {
+    z-index: 2;
+  }
+  :global(::view-transition-new(wizard-Osgar)) {
+    z-index: 2;
   }
 </style>

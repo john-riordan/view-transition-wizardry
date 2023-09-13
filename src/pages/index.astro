@@ -11,6 +11,7 @@ import { WIZARDS } from '../wizards';
         WIZARDS.map(wizard => (
           <a
             href={wizard.name}
+            transition:name={`wizard-${wizard.name}`}
             style={{
               '--x': wizard.offsets.x,
               '--y': wizard.offsets.y,
@@ -45,7 +46,6 @@ import { WIZARDS } from '../wizards';
     padding: 5rem;
   }
   a {
-    view-transition-name: var(--name);
     position: relative;
     display: block;
     padding: 8px;
