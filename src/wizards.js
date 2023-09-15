@@ -21,6 +21,7 @@ export const WIZARDS = [
     color2: 'oklch(0.48 0.13 38.12)',
     color3: 'oklch(0.55 0.13 33.78)',
     offsets: { x: '-70%', y: '53%', scale: '4.3' },
+    pendant: '/ruby-pendant.webp',
     bio: `In a realm ablaze with magic's fervor, Roderick the Ruby emerged as a formidable wizard. Clad in fiery robes, his eyes held untamed power. With mastery over rubies, he commanded their fiery essence. Flames danced at his touch, creating and destroying with equal intensity. Legends whispered of his prowess, and seekers of power sought his fiery enchantments. Roderick, the embodiment of the ruby's might, left a scorching legacy wherever he tread, forever entwined with the realm's tapestry of magic.`,
   },
   {

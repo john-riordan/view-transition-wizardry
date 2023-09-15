@@ -41,13 +41,30 @@ const { title, wizard } = Astro.props;
       transition:name={`wizard-${wizard.name}`}
     >
       <section class='img-container'>
-        <img src={wizard.art} alt={wizard.alt} width='928' height='1312' />
+        <img
+          src={wizard.art}
+          alt={wizard.alt}
+          class='hero'
+          width='928'
+          height='1312'
+        />
         <div class='meta'>
           <h1>{title}</h1>
           <div class='underline'></div>
           <p set:html={wizard.bio} />
         </div>
       </section>
+      <!-- {
+        wizard.pendant && (
+          <img
+            src={wizard.pendant}
+            class='pendant'
+            alt='Pendant'
+            width='200'
+            height='200'
+          />
+        )
+      } -->
     </div>
   </main>
 </Layout>
@@ -90,15 +107,24 @@ const { title, wizard } = Astro.props;
   }
   img {
     position: absolute;
+    height: auto;
+    pointer-events: none;
+  }
+  .hero {
     top: 50%;
     left: 50%;
     width: 100%;
     height: auto;
     translate: var(--x) var(--y);
     scale: var(--s);
-    pointer-events: none;
   }
-
+  .pendant {
+    top: 0%;
+    right: 0%;
+    width: 300px;
+    translate: 45% -17%;
+    filter: drop-shadow(0px 15px 13px black);
+  }
   .meta {
     position: absolute;
     display: flex;
